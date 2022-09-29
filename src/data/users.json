@@ -1,0 +1,20 @@
+[
+  {
+    "id": 100,
+    "name": "Bill Burr",
+    "email": "bill@burr.com",
+    "avatar": "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Avatar_Aang.png/220px-Avatar_Aang.png"
+  },
+  {
+    "id": 101,
+    "name": "Sam Neil",
+    "email": "sam@neil.com",
+    "avatar": "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Avatar_Aang.png/220px-Avatar_Aang.png"
+  },
+  {
+    "id": 102,
+    "name": "Dan Vern",
+    "email": "dan@vern.com",
+    "avatar": "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Avatar_Aang.png/220px-Avatar_Aang.png"
+  }
+]
