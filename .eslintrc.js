@@ -56,7 +56,7 @@ module.exports = {
     ]
   },
   settings: {
-    'import/extensions': ['.js'],
+    'import/extensions': ['.js', '.jsx'],
     'import/resolver': {
       node: {
         moduleDirectory: ['node_modules', 'src/']
