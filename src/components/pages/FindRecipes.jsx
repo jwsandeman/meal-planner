@@ -7,7 +7,7 @@ const FindRecipes = () => {
     cuisineType: ''
   };
   const mainIngredients = ['chicken', 'beef', 'lamb', 'pork', 'vegetarian', 'vegan'];
-  const mealTypes = ['breaky', 'smoko', 'lunch', 'snack', 'dinner', 'treat', 'dessert'];
+  const mealTypes = ['breakfast', 'brunch', 'lunch/dinner', 'snack', 'teatime'];
   const cuisineTypes = ['mexican', 'indian', 'bbq', 'american', 'aussie'];
   const [formData, setFormData] = useState(initialFormData);
 

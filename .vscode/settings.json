@@ -9,5 +9,6 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
-    "tabnine.experimentalAutoImports": true
+    "tabnine.experimentalAutoImports": true,
+    "dotenv.enableAutocloaking": false
 }
