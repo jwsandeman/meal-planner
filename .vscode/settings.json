@@ -1,14 +1,12 @@
 {
-    "emmet.preferences": {
-        
-    },
+  "emmet.preferences": {},
 
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact"
-    },
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2,
-    "tabnine.experimentalAutoImports": true,
-    "dotenv.enableAutocloaking": false
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "tabnine.experimentalAutoImports": true,
+  "dotenv.enableAutocloaking": false
 }
