@@ -3,18 +3,11 @@ import axios from 'axios';
 
 const FindRecipes = () => {
   const { REACT_APP_EDAMAM_APP_ID, REACT_APP_EDAMAM_APP_KEY } = process.env;
-
-  const initialFormData = {
-    mainIngredient: '',
-    diet: '',
-    health: '',
-    cuisineType: '',
-    mealType: '',
-    dishType: ''
-  };
   const mainIngredients = ['chicken', 'beef', 'lamb', 'pork', 'vegetarian', 'vegan'];
   const dietTypes = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
   const healthTypes = [
+    'immuno-supportive',
+    'Mediterranean',
     'alcohol-free',
     'alcohol-cocktail',
     'wheat-free',
@@ -28,20 +21,19 @@ const FindRecipes = () => {
     'sesame-free',
     'red-meat-free',
     'pork-free',
+    // need to test this one, im thinking spelling is wrong
     'pecatarian',
     'peanut-free',
     'paleo',
     'No-oil-added',
     'mustard-free',
     'mollusk-free',
-    'Mediterranean',
     'lupine-free',
     'low-sugar',
     'low-potassium',
     'kosher',
     'kidney-friendly',
     'keto-friendly',
-    'immuno-supportive',
     'gluten-free',
     'fodmap-free',
     'fish-free',
@@ -51,10 +43,66 @@ const FindRecipes = () => {
     'crustacean-free',
     'celery-free'
   ];
-  const cuisineTypes = ['mexican', 'indian', 'bbq', 'american', 'aussie'];
-  const mealTypes = ['breakfast', 'brunch', 'lunch/dinner', 'snack', 'teatime'];
-  const dishTypes = [];
+  const cuisineTypes = [
+    'mediterranean',
+    'asian',
+    'caribbean',
+    'british',
+    'american',
+    'central-europe',
+    'chinese',
+    'eastern-europe',
+    'french',
+    'greek',
+    'indian',
+    'italian',
+    'japanese',
+    'korean',
+    'kosher',
+    'mexican',
+    'middle-eastern',
+    'nordic',
+    'south-american',
+    'south-east asian',
+    'world'
+  ];
+  const mealTypes = ['dinner', 'breakfast', 'brunch', 'lunch', 'snack', 'teatime'];
+  const dishTypes = [
+    'main-course',
+    'alcohol-cocktail',
+    'sweets',
+    'starter',
+    'special-occasions',
+    'soup',
+    'side-dish',
+    'seafood',
+    'sandwiches',
+    'salad',
+    'preserve',
+    'preps',
+    'pizza',
+    'pies-and-tarts',
+    'pastry',
+    'pasta',
+    'pancake',
+    'ice-cream-and-custard',
+    'egg',
+    'drinks',
+    'desserts',
+    'condiments-and-sauces',
+    'cereals',
+    'bread',
+    'biscuits-and-cookies'
+  ];
 
+  const initialFormData = {
+    mainIngredient: 'chicken',
+    diet: 'balanced',
+    health: 'immuno-supportive',
+    cuisine: 'mediterranean',
+    meal: 'dinner',
+    dish: 'main-course'
+  };
   const [formData, setFormData] = useState(initialFormData);
 
   const handleFormData = (e) => {
@@ -71,12 +119,12 @@ const FindRecipes = () => {
         `https://api.edamam.com/api/recipes/v2?type=public&app_id=${REACT_APP_EDAMAM_APP_ID}&app_key=${REACT_APP_EDAMAM_APP_KEY}`,
         {
           params: {
-            q: 'chicken',
-            diet: '',
-            health: 'keto-friendly',
-            cuisineType: '',
-            mealType: 'dinner',
-            DishType: ''
+            q: formData.mainIngredient,
+            diet: formData.diet,
+            health: formData.health,
+            cuisineType: formData.cuisine,
+            mealType: formData.meal,
+            DishType: formData.dish
           }
         }
       )
@@ -97,9 +145,9 @@ const FindRecipes = () => {
   }, [formData]);
 
   return (
-    <div className="container mx-auto p-4 bg-green-500 artboard artboard-horizontal phone-6">
-      <div className="form-control">
-        <div className="input-group">
+    <div className="container mx-auto m-4 rounded-lg bg-base-300 artboard artboard-horizontal phone-6">
+      <div className="form-control p-4 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           <select
             className="select"
             name="mainIngredient"
@@ -113,23 +161,31 @@ const FindRecipes = () => {
               return <option key={mainIngredient}>{mainIngredient}</option>;
             })}
           </select>
-          <select
-            className="select"
-            name="mealType"
-            value={formData.mealType}
-            onChange={handleFormData}
-          >
+          <select className="select" name="diet" value={formData.diet} onChange={handleFormData}>
             <option disabled selected>
-              Meal Type
+              Diet
             </option>
-            {mealTypes.map((mealType) => {
-              return <option key={mealType}>{mealType}</option>;
+            {dietTypes.map((dietType) => {
+              return <option key={dietType}>{dietType}</option>;
             })}
           </select>
           <select
             className="select"
-            name="cuisineType"
-            value={formData.cuisineType}
+            name="health"
+            value={formData.health}
+            onChange={handleFormData}
+          >
+            <option disabled selected>
+              Health
+            </option>
+            {healthTypes.map((healthType) => {
+              return <option key={healthType}>{healthType}</option>;
+            })}
+          </select>
+          <select
+            className="select"
+            name="cuisine"
+            value={formData.cuisine}
             onChange={handleFormData}
           >
             <option disabled selected>
@@ -139,10 +195,26 @@ const FindRecipes = () => {
               return <option key={cuisineType}>{cuisineType}</option>;
             })}
           </select>
-          <button className="btn" type="submit" onClick={handleSubmit}>
-            Find Recipes
-          </button>
+          <select className="select" name="meal" value={formData.meal} onChange={handleFormData}>
+            <option disabled selected>
+              Meal
+            </option>
+            {mealTypes.map((mealType) => {
+              return <option key={mealType}>{mealType}</option>;
+            })}
+          </select>
+          <select className="select" name="dish" value={formData.dish} onChange={handleFormData}>
+            <option disabled selected>
+              Dish
+            </option>
+            {dishTypes.map((dishType) => {
+              return <option key={dishType}>{dishType}</option>;
+            })}
+          </select>
         </div>
+        <button className="btn w-full" type="submit" onClick={handleSubmit}>
+          Find Recipes
+        </button>
       </div>
     </div>
   );
