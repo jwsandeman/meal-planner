@@ -22,10 +22,10 @@ const FindRecipes = () => {
     'red-meat-free',
     'pork-free',
     // need to test this one, im thinking spelling is wrong
-    'pecatarian',
+    'pescatarian',
     'peanut-free',
     'paleo',
-    'No-oil-added',
+    'no-oil-added',
     'mustard-free',
     'mollusk-free',
     'lupine-free',
@@ -49,9 +49,9 @@ const FindRecipes = () => {
     'caribbean',
     'british',
     'american',
-    'central-europe',
+    'central europe',
     'chinese',
-    'eastern-europe',
+    'eastern europe',
     'french',
     'greek',
     'indian',
@@ -60,39 +60,39 @@ const FindRecipes = () => {
     'korean',
     'kosher',
     'mexican',
-    'middle-eastern',
+    'middle eastern',
     'nordic',
-    'south-american',
-    'south-east asian',
+    'south american',
+    'south east asian',
     'world'
   ];
   const mealTypes = ['dinner', 'breakfast', 'brunch', 'lunch', 'snack', 'teatime'];
   const dishTypes = [
-    'main-course',
-    'alcohol-cocktail',
+    'main course',
+    'alcohol cocktail',
     'sweets',
     'starter',
-    'special-occasions',
+    'special occasions',
     'soup',
-    'side-dish',
+    'side dish',
     'seafood',
     'sandwiches',
     'salad',
     'preserve',
     'preps',
     'pizza',
-    'pies-and-tarts',
+    'pies and tarts',
     'pastry',
     'pasta',
     'pancake',
-    'ice-cream-and-custard',
+    'ice cream and custard',
     'egg',
     'drinks',
     'desserts',
-    'condiments-and-sauces',
+    'condiments and sauces',
     'cereals',
     'bread',
-    'biscuits-and-cookies'
+    'biscuits and cookies'
   ];
 
   const initialFormData = {
@@ -124,7 +124,8 @@ const FindRecipes = () => {
             health: formData.health,
             cuisineType: formData.cuisine,
             mealType: formData.meal,
-            DishType: formData.dish
+            DishType: formData.dish,
+            random: 'true'
           }
         }
       )
@@ -149,7 +150,7 @@ const FindRecipes = () => {
       <div className="form-control p-4 gap-4">
         <div className="grid grid-cols-3 gap-4">
           <select
-            className="select"
+            className="select select-secondary"
             name="mainIngredient"
             value={formData.mainIngredient}
             onChange={handleFormData}
@@ -161,7 +162,12 @@ const FindRecipes = () => {
               return <option key={mainIngredient}>{mainIngredient}</option>;
             })}
           </select>
-          <select className="select" name="diet" value={formData.diet} onChange={handleFormData}>
+          <select
+            className="select select-secondary"
+            name="diet"
+            value={formData.diet}
+            onChange={handleFormData}
+          >
             <option disabled selected>
               Diet
             </option>
@@ -170,7 +176,7 @@ const FindRecipes = () => {
             })}
           </select>
           <select
-            className="select"
+            className="select select-secondary"
             name="health"
             value={formData.health}
             onChange={handleFormData}
@@ -183,7 +189,7 @@ const FindRecipes = () => {
             })}
           </select>
           <select
-            className="select"
+            className="select select-secondary"
             name="cuisine"
             value={formData.cuisine}
             onChange={handleFormData}
@@ -195,7 +201,12 @@ const FindRecipes = () => {
               return <option key={cuisineType}>{cuisineType}</option>;
             })}
           </select>
-          <select className="select" name="meal" value={formData.meal} onChange={handleFormData}>
+          <select
+            className="select select-secondary"
+            name="meal"
+            value={formData.meal}
+            onChange={handleFormData}
+          >
             <option disabled selected>
               Meal
             </option>
@@ -203,7 +214,12 @@ const FindRecipes = () => {
               return <option key={mealType}>{mealType}</option>;
             })}
           </select>
-          <select className="select" name="dish" value={formData.dish} onChange={handleFormData}>
+          <select
+            className="select select-secondary"
+            name="dish"
+            value={formData.dish}
+            onChange={handleFormData}
+          >
             <option disabled selected>
               Dish
             </option>
