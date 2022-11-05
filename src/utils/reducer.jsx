@@ -3,7 +3,25 @@ export const reducer = (state, action) => {
     case 'setRecipes': {
       return {
         ...state,
-        recipes: action.data
+        recipes: state.recipes.concat(action.data)
+      };
+    }
+    case 'setMyRecipes': {
+      return {
+        ...state,
+        myRecipes: [...state.myRecipes, action.data]
+      };
+    }
+    case 'setSelectedRecipes': {
+      return {
+        ...state,
+        selectedRecipes: [...state.selectedRecipes, action.data]
+      };
+    }
+    case 'setFavourites': {
+      return {
+        ...state,
+        favourites: [...state.favourites, action.data]
       };
     }
     default:

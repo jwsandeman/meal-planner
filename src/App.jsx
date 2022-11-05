@@ -1,6 +1,5 @@
 import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
-// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NotFound from './components/NotFound.jsx';
 import Navbar from './components/common/Navbar.jsx';
 import Favourites from './components/pages/Favourites.jsx';
@@ -17,13 +16,12 @@ const App = () => {
     loggedInUser: sessionStorage.getItem('email') || null,
     loggedInUserId: sessionStorage.getItem('id') || null,
     token: sessionStorage.getItem('token') || null,
-    recipes: {
-      title: 'beef booginyung'
-    }
+    recipes: [],
+    myRecipes: [],
+    selectedRecipes: [],
+    favourites: []
   };
-
   const [store, dispatch] = useReducer(reducer, initialState);
-  const { recipes } = store;
 
   return (
     <StateContext.Provider value={{ store, dispatch }}>
@@ -32,13 +30,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Navigate to="find-recipes" replace />} />
           <Route path="find-recipes">
-            <Route index element={<FindRecipes recipes={recipes} />} />
+            <Route index element={<FindRecipes />} />
           </Route>
-          <Route path="selected-recipes" element={<SelectedRecipes recipes={recipes} />} />
-          <Route path="my-recipes" element={<MyRecipes recipes={recipes} />} />
-          <Route path="shopping-list" element={<ShoppingList recipes={recipes} />} />
-          <Route path="my-account" element={<MyAccount recipes={recipes} />} />
-          <Route path="favourites" element={<Favourites recipes={recipes} />} />
+          <Route path="selected-recipes" element={<SelectedRecipes />} />
+          <Route path="my-recipes" element={<MyRecipes />} />
+          <Route path="shopping-list" element={<ShoppingList />} />
+          <Route path="my-account" element={<MyAccount />} />
+          <Route path="favourites" element={<Favourites />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
