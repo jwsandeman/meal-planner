@@ -2,102 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useGlobalState } from '../../utils/stateContext.jsx';
 import Card from '../common/Card.jsx';
+import {
+  cuisineTypes,
+  dietTypes,
+  dishTypes,
+  healthTypes,
+  mainIngredients,
+  mealTypes
+} from 'data/recipeParams.jsx';
 
 const FindRecipes = () => {
   const { REACT_APP_EDAMAM_APP_ID, REACT_APP_EDAMAM_APP_KEY } = process.env;
   const { store, dispatch } = useGlobalState();
   const { recipes } = store;
-  const mainIngredients = ['chicken', 'beef', 'lamb', 'pork', 'vegetarian', 'vegan'];
-  const dietTypes = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
-  const healthTypes = [
-    'immuno-supportive',
-    'Mediterranean',
-    'alcohol-free',
-    'alcohol-cocktail',
-    'wheat-free',
-    'vegetarian',
-    'vegan',
-    'tree-nut-free',
-    'sulfite-free',
-    'sugar-conscious',
-    'soy-free',
-    'shellfish-free',
-    'sesame-free',
-    'red-meat-free',
-    'pork-free',
-    // need to test this one, im thinking spelling is wrong
-    'pescatarian',
-    'peanut-free',
-    'paleo',
-    'no-oil-added',
-    'mustard-free',
-    'mollusk-free',
-    'lupine-free',
-    'low-sugar',
-    'low-potassium',
-    'kosher',
-    'kidney-friendly',
-    'keto-friendly',
-    'gluten-free',
-    'fodmap-free',
-    'fish-free',
-    'egg-free',
-    'DASH',
-    'dairy-free',
-    'crustacean-free',
-    'celery-free'
-  ];
-  const cuisineTypes = [
-    'mediterranean',
-    'asian',
-    'caribbean',
-    'british',
-    'american',
-    'central europe',
-    'chinese',
-    'eastern europe',
-    'french',
-    'greek',
-    'indian',
-    'italian',
-    'japanese',
-    'korean',
-    'kosher',
-    'mexican',
-    'middle eastern',
-    'nordic',
-    'south american',
-    'south east asian',
-    'world'
-  ];
-  const mealTypes = ['dinner', 'breakfast', 'brunch', 'lunch', 'snack', 'teatime'];
-  const dishTypes = [
-    'main course',
-    'alcohol cocktail',
-    'sweets',
-    'starter',
-    'special occasions',
-    'soup',
-    'side dish',
-    'seafood',
-    'sandwiches',
-    'salad',
-    'preserve',
-    'preps',
-    'pizza',
-    'pies and tarts',
-    'pastry',
-    'pasta',
-    'pancake',
-    'ice cream and custard',
-    'egg',
-    'drinks',
-    'desserts',
-    'condiments and sauces',
-    'cereals',
-    'bread',
-    'biscuits and cookies'
-  ];
 
   const initialFormData = {
     mainIngredient: 'chicken',
@@ -154,11 +71,6 @@ const FindRecipes = () => {
 
   return (
     <>
-      {/* <div className="flex container items-center justify-center max-w-5xl mx-auto m-4 p-4 rounded-lg bg-base-300 phone-6 text-center">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Find Recipes</h1>
-        </div>
-      </div> */}
       <div className="flex flex-col container justify-center max-w-6xl mx-auto m-4 rounded-lg bg-base-300 phone-6">
         <div className="flex items-center justify-center pt-4">
           <h1 className="text-5xl font-bold">Find Recipes</h1>
